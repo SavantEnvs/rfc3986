@@ -1,0 +1,11 @@
+# Mayhem target: rfc3986 URI/IRI parser — the historical mayhemheroes `fuzz-url` Atheris harness
+# (mayhem/fuzz_url.py + fuzz_helpers.py, ported verbatim from the mayhemheroes fork), reproducing
+# mayhemheroes run 4 at the vulnerable upstream commit (BACKPORT.md). The cmd binary is the compiled
+# ELF launcher that drives it; Atheris instruments rfc3986 so the replay records coverage (edges).
+project: savantenvs/rfc3986
+target: fuzz-url-buggy-mhh-run-4
+# origin: https://app.mayhem.security/mayhemheroes/rfc3986/fuzz-url/4
+
+cmds:
+  - cmd: /mayhem/fuzz_url_fuzzer
+    libfuzzer: true
